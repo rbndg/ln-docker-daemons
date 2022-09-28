@@ -79,7 +79,6 @@ module.exports = (args, cbk) => {
               lightning_rpc_port: lightningRpcPort,
               lnd_configuration: args.lnd_configuration,
             });
-
             const {lnd} = authenticatedLndGrpc({
               cert: lightningDocker.cert,
               macaroon: lightningDocker.macaroon,
@@ -132,7 +131,10 @@ module.exports = (args, cbk) => {
 
                 return {lnd};
               },
+              rpc_socket: lightningDocker.socket,
               socket: lightningDocker.ln_socket,
+              macaroon: lightningDocker.macaroon,
+              cert: lightningDocker.cert,
             };
           });
         });
@@ -158,6 +160,9 @@ module.exports = (args, cbk) => {
             lnd: node.lnd,
             rpc: node.rpc,
             socket: node.socket,
+            rpc_socket:node.rpc_socket,
+            macaroon: node.macaroon,
+            cert: node.cert,
           })),
         };
       }],
