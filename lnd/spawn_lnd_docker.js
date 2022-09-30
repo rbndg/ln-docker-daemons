@@ -80,6 +80,7 @@ module.exports = (args, cbk) => {
         const zmqTxPort = args.bitcoind_zmq_tx_port;
 
         const arguments = [
+          '--protocol.wumbo-channels',
           '--accept-keysend',
           '--allow-circular-route',
           '--autopilot.heuristic=externalscore:0.5',
